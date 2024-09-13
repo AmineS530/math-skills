@@ -5,6 +5,7 @@ import (
 	"sort"
 )
 
+// calls to all the calucaltion functions while passing a pointer to the struct
 func Calc(pData *ProgData) {
 	calcAvg(pData)
 	calcMed(pData)
@@ -12,6 +13,7 @@ func Calc(pData *ProgData) {
 	calcStdDev(pData)
 }
 
+// calculates the average
 func calcAvg(pData *ProgData) {
 	sum := 0.0
 	for _, num := range pData.Nums {
@@ -20,6 +22,7 @@ func calcAvg(pData *ProgData) {
 	pData.Res.Average = sum / float64(len(pData.Nums))
 }
 
+// calculates the Median
 func calcMed(pData *ProgData) {
 	sort.Float64s(pData.Nums)
 	nlen := len(pData.Nums)
@@ -31,6 +34,7 @@ func calcMed(pData *ProgData) {
 	pData.Res.Median = pData.Nums[mid]
 }
 
+// calculates the Variance
 func calcVar(pData *ProgData) {
 	avg := pData.Res.Average
 	var res float64
@@ -41,6 +45,7 @@ func calcVar(pData *ProgData) {
 	pData.Res.Variance = res / float64(len(pData.Nums))
 }
 
+// calculates the Standard Deviation
 func calcStdDev(pData *ProgData) {
 	pData.Res.Standard_Deviation = math.Sqrt(pData.Res.Variance)
 }
