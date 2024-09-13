@@ -9,10 +9,9 @@ import (
 )
 
 type ProgData struct {
-	InputPath string
-	FileData  []string
-	Nums      []float64
-	Res       calculations
+	FileData []string
+	Nums     []float64
+	Res      calculations
 }
 
 type calculations struct {
@@ -20,13 +19,12 @@ type calculations struct {
 }
 
 func (pData *ProgData) InitData(args []string) {
-	pData.InputPath = args[1]
 	readFile(pData)
 	setNums(pData)
 }
 
 func readFile(pData *ProgData) {
-	data, err := os.ReadFile(pData.InputPath)
+	data, err := os.ReadFile(os.Args[1])
 	if err != nil {
 		PrintErr(err.Error())
 	}
