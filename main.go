@@ -14,7 +14,5 @@ func main() {
 			"\nEX: ./[program_name] <data.txt>")
 	}
 	pData.InitData(os.Args)
-	//	fmt.Println(pData.Nums)
-	skillhelper.Calc(&pData)
 	pData.DisplayResults()
 }

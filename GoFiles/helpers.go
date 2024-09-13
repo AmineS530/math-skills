@@ -2,6 +2,7 @@ package skillhelper
 
 import (
 	"fmt"
+	"math"
 	"os"
 	"strconv"
 	"strings"
@@ -38,19 +39,22 @@ func readFile(pData *ProgData) {
 
 func setNums(pData *ProgData) {
 	for i := 0; i < len(pData.FileData); i++ {
-		num, err := strconv.ParseFloat(pData.FileData[i], 64)
-		if err != nil {
-			PrintErr(err.Error())
+		if pData.FileData[i] != "" && i < len(pData.FileData) {
+			num, err := strconv.ParseFloat(pData.FileData[i], 64)
+			if err != nil {
+				PrintErr(err.Error())
+			}
+			pData.Nums = append(pData.Nums, num)
 		}
-		pData.Nums = append(pData.Nums, num)
 	}
 }
 
 func (result ProgData) DisplayResults() {
-	fmt.Printf("Average:            %d\n", int((result.Res.Average)))
-	fmt.Printf("Median:             %d\n", int(result.Res.Median))
-	fmt.Printf("Variance:           %d\n", int(result.Res.Variance))
-	fmt.Printf("Standard Deviation: %d\n", int(result.Res.Standard_Deviation))
+	Calc(&result)
+	fmt.Printf("Average: %d\n", int(math.Round(result.Res.Average)))
+	fmt.Printf("Median: %d\n", int(math.Round(result.Res.Median)))
+	fmt.Printf("Variance: %d\n", int(math.Round(result.Res.Variance)))
+	fmt.Printf("Standard Deviation: %d\n", int(math.Round(result.Res.Standard_Deviation)))
 }
 
 func PrintErr(str string) {
