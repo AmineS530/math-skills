@@ -1,0 +1,61 @@
+package skillhelper
+
+import (
+	"fmt"
+	"os"
+	"strconv"
+	"strings"
+)
+
+type ProgData struct {
+	InputPath string
+	FileData  []string
+	Nums      []float64
+	Res       calculations
+}
+
+type calculations struct {
+	Average, Median, Variance, Standard_Deviation float64
+}
+
+func (pData *ProgData) InitData(args []string) {
+	pData.InputPath = args[1]
+	readFile(pData)
+	setNums(pData)
+}
+
+func readFile(pData *ProgData) {
+	data, err := os.ReadFile(pData.InputPath)
+	if err != nil {
+		PrintErr(err.Error())
+	}
+	if len(data) == 0 {
+		PrintErr("Error: The File is Empty")
+	}
+	processedData := strings.ReplaceAll(string(data), " ", "")
+	pData.FileData = strings.Split(string(processedData), "\n")
+}
+
+func setNums(pData *ProgData) {
+	for i := 0; i < len(pData.FileData); i++ {
+		num, err := strconv.ParseFloat(pData.FileData[i], 64)
+		if err != nil {
+			PrintErr(err.Error())
+		}
+		pData.Nums = append(pData.Nums, num)
+	}
+}
+
+func (result ProgData) DisplayResults() {
+	fmt.Printf("Average:            %d\n", int((result.Res.Average)))
+	fmt.Printf("Median:             %d\n", int(result.Res.Median))
+	fmt.Printf("Variance:           %d\n", int(result.Res.Variance))
+	fmt.Printf("Standard Deviation: %d\n", int(result.Res.Standard_Deviation))
+}
+
+func PrintErr(str string) {
+	fmt.Println("\033[1;38;5;221m╔════════════════════" + strings.Repeat("═", len(str)) + "════════════════════╗" + "\033[0m")
+	fmt.Println("	    	\033[1;38;5;196mError:", str+"\033[0m")
+	fmt.Println("\033[1;38;5;221m╚════════════════════" + strings.Repeat("═", len(str)) + "════════════════════╝" + "\033[0m")
+	os.Exit(1)
+}
