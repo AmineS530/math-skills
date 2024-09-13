@@ -21,31 +21,45 @@ The input file should contain one numerical value per line, as the following exa
 ```
 
 ## Usage
-Run the program from the command line, passing the input file as an argument or use the Makefile assiciated.
+#### Run the program from the command line, while passing the input file as an argument or use the Makefile assiciated.
 
-Example:
+#### Example:
 ```zsh
 go run main.go <file_name.txt>
 ```
-or
+#### or
 ```zsh
 ./[program_name] <file_name.txt>
 ```
 
 ## How to test
-run the premade Makefile using:
+#### Run the premade Makefile using:
 ```zsh
 make
 ```
 
 ## Output
-The program will output the calculated statistics in this format:
+#### The program will output the calculated statistics in this format:
 
 ```
 Average: xx
 Median: xx
 Variance: xx
 Standard Deviation: xx
+```
+#### or this when using the Makefile
+```
+Results from go app
+Average: x1
+Median: x2
+Variance: x3
+Standard Deviation: x4
+
+Solution
+Average: x1
+Median: x2
+Variance: x3
+Standard Deviation: x4
 ```
 
 ##### <p align="center">Made by asadik</p>
