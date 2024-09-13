@@ -1,6 +1,7 @@
 package skillhelper
 
 import (
+	"math"
 	"sort"
 )
 
@@ -42,4 +43,5 @@ func calcVar(pData *ProgData) {
 }
 
 func calcStdDev(pData *ProgData) {
+	pData.Res.Standard_Deviation = math.Sqrt(pData.Res.Variance)
 }
