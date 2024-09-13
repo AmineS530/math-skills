@@ -36,8 +36,7 @@ func calcVar(pData *ProgData) {
 	var res float64
 	for _, num := range pData.Nums {
 		diff := num - avg
-		pow := diff * diff
-		res += pow
+		res += diff * diff
 	}
 	pData.Res.Variance = res / float64(len(pData.Nums))
 }

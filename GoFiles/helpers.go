@@ -9,21 +9,19 @@ import (
 )
 
 type ProgData struct {
-	FileData []string
-	Nums     []float64
-	Res      calculations
+	Nums []float64
+	Res  calculations
 }
 
 type calculations struct {
 	Average, Median, Variance, Standard_Deviation float64
 }
 
-func (pData *ProgData) InitData(args []string) {
-	readFile(pData)
-	setNums(pData)
+func (pData *ProgData) InitData() {
+	setNums(readFile(), pData)
 }
 
-func readFile(pData *ProgData) {
+func readFile() []string {
 	data, err := os.ReadFile(os.Args[1])
 	if err != nil {
 		PrintErr(err.Error())
@@ -32,13 +30,13 @@ func readFile(pData *ProgData) {
 		PrintErr("Error: The File is Empty")
 	}
 	processedData := strings.ReplaceAll(string(data), " ", "")
-	pData.FileData = strings.Split(string(processedData), "\n")
+	return strings.Split(processedData, "\n")
 }
 
-func setNums(pData *ProgData) {
-	for i := 0; i < len(pData.FileData); i++ {
-		if pData.FileData[i] != "" && i < len(pData.FileData) {
-			num, err := strconv.ParseFloat(pData.FileData[i], 64)
+func setNums(FileData []string, pData *ProgData) {
+	for i := 0; i < len(FileData); i++ {
+		if FileData[i] != "" && i < len(FileData) {
+			num, err := strconv.ParseFloat(FileData[i], 64)
 			if err != nil {
 				PrintErr(err.Error())
 			}

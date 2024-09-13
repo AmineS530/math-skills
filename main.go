@@ -13,6 +13,6 @@ func main() {
 		skillhelper.PrintErr("Program only accept one argument" +
 			"\nEX: ./[program_name] <data.txt>")
 	}
-	pData.InitData(os.Args)
+	pData.InitData()
 	pData.DisplayResults()
 }
