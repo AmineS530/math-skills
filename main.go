@@ -10,9 +10,7 @@ var pData skillhelper.ProgData
 
 func main() {
 	if len(os.Args) != 2 {
-		skillhelper.PrintErr("Program only accept one argument" +
-			"\nEX: ./[program_name] <data.txt>")
+		skillhelper.PrintErr("Program only accept one argument\nEX: ./[program_name] <file_name.txt>")
 	}
-	pData.InitData()
 	pData.DisplayResults()
 }

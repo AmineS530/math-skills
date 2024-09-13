@@ -17,10 +17,6 @@ type calculations struct {
 	Average, Median, Variance, Standard_Deviation float64
 }
 
-func (pData *ProgData) InitData() {
-	setNums(readFile(), pData)
-}
-
 func readFile() []string {
 	data, err := os.ReadFile(os.Args[1])
 	if err != nil {
@@ -46,6 +42,7 @@ func setNums(FileData []string, pData *ProgData) {
 }
 
 func (result ProgData) DisplayResults() {
+	setNums(readFile(), &result)
 	Calc(&result)
 	fmt.Printf("Average: %d\n", int(math.Round(result.Res.Average)))
 	fmt.Printf("Median: %d\n", int(math.Round(result.Res.Median)))
