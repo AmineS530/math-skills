@@ -21,7 +21,7 @@ The input file should contain one numerical value per line, as the following exa
 ```
 
 ## Usage
-#### Run the program from the command line, while passing the input file as an argument or use the Makefile assiciated.
+#### Run the program from the command line, while passing the input file as an argument or use the Makefile associated.
 
 #### Example:
 ```zsh
@@ -50,16 +50,16 @@ Standard Deviation: xx
 #### or this when using the Makefile
 ```
 Results from go app
-Average: x1
-Median: x2
-Variance: x3
-Standard Deviation: x4
+Average: w
+Median: x
+Variance: y
+Standard Deviation: z
 
 Solution
-Average: x1
-Median: x2
-Variance: x3
-Standard Deviation: x4
+Average: w
+Median: x
+Variance: y
+Standard Deviation: z
 ```
 
 ##### <p align="center">Made by asadik</p>
